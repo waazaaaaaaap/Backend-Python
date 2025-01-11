@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block title %}Edit Service{% endblock title %} {%
+block body %}
+
+<div class="right-panel" style="margin-top: 20px">
+  <h2>Edit Service</h2>
+
+  <form method="post" class="form" id="service-add">
+    {{ service_form.hidden_tag() }}
+    <input type="hidden" name="form_name" value="service_form" />
+
+    <div class="form-group">
+      {{ service_form.title(class="input",
+      placeholder=service_form.title.label.text, required="required") }} {{
+      service_form.description(class="input",
+      placeholder=service_form.description.label.text, required="required") }}
+    </div>
+
+    {{ service_form.imgurl(class="input full",
+    placeholder=service_form.imgurl.label.text, readonly=False) }} {{
+    service_form.details(class="input full",
+    placeholder=service_form.details.label.text, readonly=False) }}
+    {{service_form.price(class="input",
+    placeholder=service_form.price.label.text, required="required")}}
+    <div class="checkbox-group">
+      <input type="checkbox" id="terms" required />
+      <label for="terms">
+        I agree to the <a href="#">Terms & Conditions</a>
+      </label>
+    </div>
+
+    {{ service_form.submit(class="btn submit-btn") }}
+  </form>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,77 @@
+{% extends "base.html" %} {% block title %}Writeups{% endblock title %} {% block
+body %}
+<!-- Main -->
+
+<style>
+  body {
+    background-image: url("/static/images/freepik__upload__12914.jpeg");
+    background-position: 10%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+  }
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(
+      0,
+      0,
+      0,
+      0.8
+    ); /* Adjust the opacity for the desired darkness */
+    z-index: -1; /* Ensures it stays behind all content */
+  }
+</style>
+<div class="container">
+  <div class="writeups-main">
+    <div class="writeups-center">
+      <div class="head">
+        <h1>Community Writeups</h1>
+      </div>
+      <div class="writeups-listing">
+        {% for posts in posts %}
+        <div class="writeup-card-main">
+          <div
+            class="writeup-head"
+            style="
+              background-image: url('{{posts.imgurl}}');
+              background-size: cover;
+              background-position: center;
+            "
+          >
+            <div class="writeup-head-title">
+              <h2>{{posts.title}}</h2>
+            </div>
+          </div>
+
+          <div class="writeup-author">
+            <h1>AUTHOR:</h1>
+            <p>{{posts.author}}</p>
+          </div>
+          <div class="writeup-thanks">
+            <p>thanks</p>
+            <span> | </span>
+            <p>{{posts.likes}}</p>
+          </div>
+
+          <div class="writeup-smalldescription">
+            <h1>Small Description</h1>
+            <p>{{posts.subtitle}}</p>
+          </div>
+
+          <div class="writeup-actions">
+            <a class="btn-main full" href="/vulnerability-writeup/{{posts.id}}"
+              >Read Writeup</a
+            >
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock body %}

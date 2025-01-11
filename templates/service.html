@@ -1,0 +1,170 @@
+{% extends "base.html" %} {% block title %} Service | {{ service.title }} {%
+endblock title %}{% block body %}
+
+<section
+  class="py-5"
+  style="
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  "
+>
+  <div
+    class="container px-4 px-lg-5"
+    style="
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.8);
+      padding: 40px;
+    "
+  >
+    <div class="row gx-4 gx-lg-5 align-items-center">
+      <!-- Course Image -->
+      <div class="col-md-6">
+        <div
+          style="
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+          "
+        >
+          <img
+            class="img-fluid"
+            src="{{ service.imgurl }}"
+            alt="{{ service.title }}"
+            style="transition: transform 0.4s ease"
+            onmouseover="this.style.transform='scale(1.1)'"
+            onmouseout="this.style.transform='scale(1)'"
+          />
+
+          <!-- Description with background -->
+          <h2
+            style="
+              position: absolute;
+              bottom: 0;
+              right: 0;
+              margin: 0;
+              padding: 20px 30px;
+              background: linear-gradient(
+                135deg,
+                #3d3d3d,
+                #2d2d2d
+              ); /* Soft Ubuntu terminal-like color */
+              color: white;
+              font-family: 'Ubuntu', sans-serif;
+              font-size: 1.5rem;
+              border-top-left-radius: 15px;
+              text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+              box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.3);
+            "
+          >
+            {{ service.description }}
+          </h2>
+        </div>
+      </div>
+
+      <!-- Course Details -->
+      <div class="col-md-6">
+        <!-- Special Offer Badge -->
+
+        <div
+          class="badge text-uppercase"
+          style="
+            background: linear-gradient(135deg, #ff512f, #dd2476);
+            color: white;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 50px;
+            font-size: 14px;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 20px;
+          "
+        >
+          Special Offer
+        </div>
+
+        <!-- Course Title -->
+        <h1
+          class="display-4 fw-bold"
+          style="
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+          "
+        >
+          {{ service.title }}
+        </h1>
+
+        <!-- Price -->
+        <div
+          class="fs-3 mb-4"
+          style="
+            color: #28a745;
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
+          "
+        >
+          ${{ service.price }}
+        </div>
+
+        <!-- Description -->
+        <p
+          class="lead"
+          style="color: #4a4a4a; line-height: 1.6; margin-bottom: 20px"
+        >
+          {{ servicedescription }}
+        </p>
+
+        <!-- Details -->
+        <!-- Details -->
+        <p
+          style="
+            color: #333;
+            font-size: 25px;
+            margin-bottom: 20px;
+            padding-left: 20px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            word-break: break-word;
+            overflow-y: auto;
+            max-height: 200px; /* Adjust based on your needs */
+          "
+        >
+          {{ service.details }}
+        </p>
+
+        <!-- Action Button -->
+        <div>
+          <a
+            href="/enroll/{{ service.id }}"
+            class="btn btn-primary btn-lg"
+            style="
+              background: linear-gradient(135deg, #6a11cb, #2575fc);
+              border: none;
+              padding: 12px 30px;
+              border-radius: 30px;
+              color: white;
+              font-weight: bold;
+              box-shadow: 0 8px 20px rgba(106, 17, 203, 0.4);
+              transition: all 0.3s ease;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+            "
+            onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 12px 30px rgba(106, 17, 203, 0.6)';"
+            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 20px rgba(106, 17, 203, 0.4)';"
+          >
+            Book Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock body %}

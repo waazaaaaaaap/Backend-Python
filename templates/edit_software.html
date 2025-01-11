@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block title %}Edit Software{% endblock title %} {%
+block body %}
+
+<div class="right-panel" style="margin-top: 20px">
+  <h2>Edit Software</h2>
+
+  <form method="post" class="form" id="course-add">
+    {{ software_form.hidden_tag() }}
+    <input type="hidden" name="form_name" value="software_form" />
+
+    <div class="form-group">
+      {{ software_form.title(class="input",
+      placeholder=software_form.title.label.text, required="required") }} {{
+      software_form.description(class="input",
+      placeholder=software_form.description.label.text, required="required") }}
+    </div>
+
+    {{ software_form.imgurl(class="input full",
+    placeholder=software_form.imgurl.label.text, readonly=False) }} {{
+    software_form.details(class="input full",
+    placeholder=software_form.details.label.text, readonly=False) }}
+    {{software_form.price(class="input",
+    placeholder=software_form.price.label.text, required="required")}}
+    <div class="checkbox-group">
+      <input type="checkbox" id="terms" required />
+      <label for="terms">
+        I agree to the <a href="#">Terms & Conditions</a>
+      </label>
+    </div>
+
+    {{ software_form.submit(class="btn submit-btn") }}
+  </form>
+</div>
+
+{% endblock body %}

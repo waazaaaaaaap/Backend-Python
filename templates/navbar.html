@@ -1,0 +1,144 @@
+<header>
+  <a href="https://www.tbceducation.ge/">
+    <img class="logo" src="/static/images/tibisi.png" alt="Main Logo" />
+  </a>
+  <nav>
+    <ul>
+      <li id="hideOnMobile">
+        <a href="/">Main</a>
+      </li>
+      <li id="hideOnMobile">
+        <a href="/about">About Us</a>
+      </li>
+      <li id="hideOnMobile">
+        <a href="/writeups">WriteUps</a>
+      </li>
+      <li onclick="showSidebar()">
+        <a href="#" class="menu" id="hideOnBig">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="26px"
+            viewBox="0 -960 960 960"
+            width="26px"
+            fill="#e8eaed"
+          >
+            <path
+              d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
+            />
+          </svg>
+        </a>
+      </li>
+    </ul>
+
+    <ul class="sidebar">
+      <li onclick="hideSidebar()">
+        <a href="#">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="26px"
+            viewBox="0 -960 960 960"
+            width="26px"
+            fill="#e8eaed"
+          >
+            <path
+              d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+            />
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a href="/" class="active">Main</a>
+      </li>
+
+      <li>
+        <a href="/about">About Us</a>
+      </li>
+      <li>
+        <a href="/writeups">WriteUps</a>
+      </li>
+
+      <div class="icons">
+        <a href="/login"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="40px"
+            viewBox="0 -960 960 960"
+            width="40px"
+            fill="#75FBFD"
+          >
+            <path
+              d="M480.67-120v-66.67h292.66v-586.66H480.67V-840h292.66q27 0 46.84 19.83Q840-800.33 840-773.33v586.66q0 27-19.83 46.84Q800.33-120 773.33-120H480.67Zm-63.34-176.67-47-48 102-102H120v-66.66h351l-102-102 47-48 184 184-182.67 182.66Z"
+            /></svg
+        ></a>
+        <a href="/register"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="40px"
+            viewBox="0 -960 960 960"
+            width="40px"
+            fill="#75FBFD"
+          >
+            <path
+              d="M726.67-400v-126.67H600v-66.66h126.67V-720h66.66v126.67H920v66.66H793.33V-400h-66.66ZM360-480.67q-66 0-109.67-43.66Q206.67-568 206.67-634t43.66-109.67Q294-787.33 360-787.33t109.67 43.66Q513.33-700 513.33-634t-43.66 109.67Q426-480.67 360-480.67ZM40-160v-100q0-34.67 17.5-63.17T106.67-366q70.66-32.33 130.89-46.5 60.22-14.17 122.33-14.17T482-412.5q60 14.17 130.67 46.5 31.66 15 49.5 43.17Q680-294.67 680-260v100H40Zm66.67-66.67h506.66V-260q0-14.33-7.83-27t-20.83-19q-65.34-31-116.34-42.5T360-360q-57.33 0-108.67 11.5Q200-337 134.67-306q-13 6.33-20.5 19t-7.5 27v33.33ZM360-547.33q37 0 61.83-24.84Q446.67-597 446.67-634t-24.84-61.83Q397-720.67 360-720.67t-61.83 24.84Q273.33-671 273.33-634t24.84 61.83Q323-547.33 360-547.33Zm0-86.67Zm0 407.33Z"
+            /></svg
+        ></a>
+      </div>
+    </ul>
+  </nav>
+
+  {% if not current_user.is_authenticated %}
+  <div class="icons" id="hideOnMobile">
+    <a href="/login"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="40px"
+        viewBox="0 -960 960 960"
+        width="40px"
+        fill="#75FBFD"
+      >
+        <path
+          d="M480.67-120v-66.67h292.66v-586.66H480.67V-840h292.66q27 0 46.84 19.83Q840-800.33 840-773.33v586.66q0 27-19.83 46.84Q800.33-120 773.33-120H480.67Zm-63.34-176.67-47-48 102-102H120v-66.66h351l-102-102 47-48 184 184-182.67 182.66Z"
+        /></svg
+    ></a>
+    <a href="/register"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="40px"
+        viewBox="0 -960 960 960"
+        width="40px"
+        fill="#75FBFD"
+      >
+        <path
+          d="M726.67-400v-126.67H600v-66.66h126.67V-720h66.66v126.67H920v66.66H793.33V-400h-66.66ZM360-480.67q-66 0-109.67-43.66Q206.67-568 206.67-634t43.66-109.67Q294-787.33 360-787.33t109.67 43.66Q513.33-700 513.33-634t-43.66 109.67Q426-480.67 360-480.67ZM40-160v-100q0-34.67 17.5-63.17T106.67-366q70.66-32.33 130.89-46.5 60.22-14.17 122.33-14.17T482-412.5q60 14.17 130.67 46.5 31.66 15 49.5 43.17Q680-294.67 680-260v100H40Zm66.67-66.67h506.66V-260q0-14.33-7.83-27t-20.83-19q-65.34-31-116.34-42.5T360-360q-57.33 0-108.67 11.5Q200-337 134.67-306q-13 6.33-20.5 19t-7.5 27v33.33ZM360-547.33q37 0 61.83-24.84Q446.67-597 446.67-634t-24.84-61.83Q397-720.67 360-720.67t-61.83 24.84Q273.33-671 273.33-634t24.84 61.83Q323-547.33 360-547.33Zm0-86.67Zm0 407.33Z"
+        /></svg
+    ></a>
+  </div>
+  {% endif %} {% if current_user.is_authenticated %}
+  <div id="hideOnMobile">
+    <div class="dropdown">
+      <button
+        class="dropbtn"
+        style="background-color: transparent; box-shadow: none; padding: 0"
+      >
+        <img
+          src="/static/images/suitman.jpg"
+          alt="Profile Picture"
+          class="profile-pic"
+        />
+      </button>
+      <div class="dropdown-content">
+        <div class="user-info">
+          <span class="username"
+            >{{current_user.name}} {{current_user.surname}}</span
+          >
+        </div>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/account-settings">Account settings</a>
+        <a href="/support">Support</a>
+
+        <a href="/logout" class="logout-button">Log out</a>
+      </div>
+    </div>
+  </div>
+  {%endif%}
+</header>

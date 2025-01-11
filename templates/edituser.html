@@ -1,0 +1,51 @@
+{% extends "base.html" %} {% block title %}Edit User{% endblock title %} {%
+block body %}
+
+<div class="bigcontainer">
+  <div class="customcontainer">
+    <!-- Left Section -->
+    <div class="left-panel">
+      <div class="top-bar">
+        <h1 class="logo">GEOCYBER</h1>
+        <a href="/" class="back-link">Back to website →</a>
+      </div>
+      <div class="promo-text">
+        <h2>
+          HUNT BUGS, <br />
+          HELP THE WORLD
+        </h2>
+      </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="right-panel">
+      <h2>Edit User</h2>
+
+      <form method="post" class="form">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+          {{ form.name(class="input", placeholder=form.name.label.text,
+          required="required") }} {{ form.surname(class="input",
+          placeholder=form.surname.label.text, required="required") }}
+        </div>
+        {{ form.username(class="input full",
+        placeholder=form.username.label.text, required="required") }} {{
+        form.email(class="input full", placeholder=form.email.label.text,
+        required="required") }} {{ form.password(class="input full",
+        placeholder=form.password.label.text, required="required") }}{{
+        form.repeat_password(class="input full",
+        placeholder=form.repeat_password.label.text, required="required") }}
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="terms" required />
+          <label for="terms">
+            I agree to the <a href="#">Terms & Conditions</a>
+          </label>
+        </div>
+        {{ form.submit(class="submit-btn full") }}
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock body %}

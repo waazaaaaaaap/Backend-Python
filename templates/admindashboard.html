@@ -1,0 +1,293 @@
+{% extends "base.html" %} {% block title %}Admin Dashboard{% endblock title %}
+{% block body %}
+
+<div class="admin-dashboard">
+  <div class="sidebar">
+    <h2 style="padding-top: 40px">Admin Panel</h2>
+    <button class="tab-button" onclick="showTab('services')">Services</button>
+    <button class="tab-button" onclick="showTab('courses')">Courses</button>
+    <button class="tab-button" onclick="showTab('softwares')">Softwares</button>
+    <button class="tab-button" onclick="showTab('users')">Users</button>
+    <button class="tab-button" onclick="showTab('posts')">Posts</button>
+    <button class="tab-button-manager" onclick="showTab('service-add')">
+      Add Service
+    </button>
+    <button class="tab-button-manager" onclick="showTab('software-add')">
+      Add Software
+    </button>
+    <button class="tab-button-manager" onclick="showTab('course-add')">
+      Add Course
+    </button>
+  </div>
+
+  <div class="content">
+    <div id="services" class="tab-content">
+      <h2>Services</h2>
+      <div class="course-list">
+        {% for service in services %}
+        <div class="course-item">
+          <div class="course-info">
+            <h3>{{ service.title }}</h3>
+            <p>Price: ${{ service.price }}</p>
+          </div>
+          <div class="course-actions">
+            <a
+              href="/edit_service/{{ service.id }}"
+              class="action-button change"
+              >Change</a
+            >
+            <a
+              href="/delete_service/{{ service.id }}"
+              class="action-button delete"
+              >Delete</a
+            >
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div id="courses" class="tab-content">
+      <h2>Courses</h2>
+      <div class="course-list">
+        {% for course in courses %}
+        <div class="course-item">
+          <div class="course-info">
+            <h3>{{ course.title }}</h3>
+            <p>Price: ${{ course.price }}</p>
+          </div>
+          <div class="course-actions">
+            <a href="/edit_course/{{ course.id }}" class="action-button change"
+              >Edit</a
+            >
+            <a
+              href="/delete_course/{{ course.id }}"
+              class="action-button delete"
+              >Delete</a
+            >
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div id="softwares" class="tab-content">
+      <h2>Softwares</h2>
+      <div class="course-list">
+        {% for software in softwares %}
+        <div class="course-item">
+          <div class="course-info">
+            <h3>{{ software.title }}</h3>
+            <p>Price: ${{ software.price }}</p>
+          </div>
+          <div class="course-actions">
+            <a
+              href="/edit_software/{{ software.id }}"
+              class="action-button change"
+              >Change</a
+            >
+            <a
+              href="/delete_software/{{ software.id }}"
+              class="action-button delete"
+              >Delete</a
+            >
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div id="posts" class="tab-content">
+      <h2>Posts</h2>
+      <div class="course-list">
+        {% for posts in posts %}
+        <div class="course-item">
+          <div class="course-info">
+            <h3>{{ posts.title }}</h3>
+            <p>{{posts.author}}</p>
+          </div>
+          <div class="course-actions">
+            <a href="/edit_post/{{ posts.id }}" class="action-button change"
+              >Change</a
+            >
+            <a href="/delete_post/{{ posts.id }}" class="action-button delete"
+              >Delete</a
+            >
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div id="users" class="tab-content">
+      <h2>Users</h2>
+      <div class="user-list">
+        {% for user in users %}
+        <div class="user-item">
+          <div class="user-pic">
+            <img src="/static/images/suitman.jpg" alt="user" />
+          </div>
+          <div class="user-details">
+            <div class="labels">
+              <span>Username</span>
+              <span>Full Name</span>
+              <span>Email</span>
+            </div>
+            <div class="values">
+              <span>{{user.username}}</span>
+              <span>{{user.name}} {{user.surname}}</span>
+              <span>{{user.email}}</span>
+            </div>
+          </div>
+          <div class="user-actions">
+            <a href="/delete_user/{{ user.id }}" class="action-button delete"
+              >Delete</a
+            >
+            <a href="/edit_user/{{ user.id }}" class="action-button change"
+              >Change</a
+            >
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!------MANAGEMENT FORMS------>
+
+    <!--Service Form-->
+    <div
+      class="right-panel tab-content"
+      id="service-add"
+      style="margin-top: 20px"
+    >
+      <h2>Create New Service</h2>
+
+      <form method="post" class="form" id="service-add">
+        {{ service_form.hidden_tag() }}
+        <input type="hidden" name="form_name" value="service_form" />
+
+        <div class="form-group">
+          {{ service_form.title(class="input",
+          placeholder=service_form.title.label.text, required="required") }} {{
+          service_form.description(class="input",
+          placeholder=service_form.description.label.text, required="required")
+          }}
+        </div>
+
+        {{ service_form.imgurl(class="input full",
+        placeholder=service_form.imgurl.label.text, readonly=False) }} {{
+        service_form.details(class="input full",
+        placeholder=service_form.details.label.text, readonly=False) }}
+        {{service_form.price(class="input",
+        placeholder=service_form.price.label.text, required="required")}}
+        <div class="checkbox-group">
+          <input type="checkbox" id="terms" required />
+          <label for="terms">
+            I agree to the <a href="#">Terms & Conditions</a>
+          </label>
+        </div>
+
+        {{ service_form.submit(class="btn submit-btn") }}
+      </form>
+    </div>
+
+    <!--Course Form-->
+
+    <div
+      class="right-panel tab-content"
+      id="course-add"
+      style="margin-top: 20px"
+    >
+      <h2>Add New Course</h2>
+
+      <form method="post" class="form" id="course-add">
+        {{ course_form.hidden_tag() }}
+        <input type="hidden" name="form_name" value="course_form" />
+
+        <div class="form-group">
+          {{ course_form.title(class="input",
+          placeholder=course_form.title.label.text, required="required") }} {{
+          course_form.description(class="input",
+          placeholder=course_form.description.label.text, required="required")
+          }}
+        </div>
+
+        {{ course_form.imgurl(class="input full",
+        placeholder=course_form.imgurl.label.text, readonly=False) }} {{
+        course_form.details(class="input full",
+        placeholder=course_form.details.label.text, readonly=False) }}
+        {{course_form.price(class="input",
+        placeholder=course_form.price.label.text, required="required")}}
+        <div class="checkbox-group">
+          <input type="checkbox" id="terms" required />
+          <label for="terms">
+            I agree to the <a href="#">Terms & Conditions</a>
+          </label>
+        </div>
+
+        {{ course_form.submit(class="btn submit-btn") }}
+      </form>
+    </div>
+
+    <!--Software Form-->
+
+    <div
+      class="right-panel tab-content"
+      id="software-add"
+      style="margin-top: 20px"
+    >
+      <h2>Create New Software</h2>
+
+      <form method="post" class="form" id="service-add">
+        {{ software_form.hidden_tag() }}
+        <input type="hidden" name="form_name" value="software_form" />
+
+        <div class="form-group">
+          {{ software_form.title(class="input",
+          placeholder=software_form.title.label.text, required="required") }} {{
+          software_form.description(class="input",
+          placeholder=software_form.description.label.text, required="required")
+          }}
+        </div>
+
+        {{ software_form.imgurl(class="input full",
+        placeholder=software_form.imgurl.label.text, readonly=False) }} {{
+        software_form.details(class="input full",
+        placeholder=software_form.details.label.text, readonly=False) }}
+        {{software_form.price(class="input",
+        placeholder=software_form.price.label.text, required="required")}}
+        <div class="checkbox-group">
+          <input type="checkbox" id="terms" required />
+          <label for="terms">
+            I agree to the <a href="#">Terms & Conditions</a>
+          </label>
+        </div>
+
+        {{ software_form.submit(class="btn submit-btn") }}
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+  }
+</style>
+
+<script>
+  function showTab(tabName) {
+    var i;
+    var x = document.getElementsByClassName("tab-content");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    document.getElementById(tabName).style.display = "block";
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    showTab("users");
+  });
+</script>
+
+{% endblock body %}

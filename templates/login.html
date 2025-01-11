@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block title %}Login{% endblock title %} {% block
+body %}
+
+<div class="bigcontainer">
+  <div class="customcontainer">
+    <!-- Left Section -->
+    <div class="left-panel login">
+      <div class="top-bar">
+        <h1 class="logo">GEOCYBER</h1>
+        <a href="/" class="back-link">Back to website →</a>
+      </div>
+      <div class="promo-text">
+        <h2>
+          HUNT BUGS, <br />
+          HELP THE WORLD
+        </h2>
+      </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="right-panel">
+      <h2>Login to your account</h2>
+      <p class="login-text">
+        Dont have an account?? <a href="/login">Register</a>
+      </p>
+      <form method="post" class="form">
+        {{ form.hidden_tag() }} {{ form.username(class="input full",
+        placeholder=form.username.label.text, required="required") }} {{
+        form.password(class="input full", placeholder=form.password.label.text,
+        required="required") }}
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="terms" required />
+          <label for="terms">
+            I agree to the <a href="#">Terms & Conditions</a>
+          </label>
+        </div>
+        {{ form.submit(class="submit-btn full") }}
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock body %}

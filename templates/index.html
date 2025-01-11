@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+<!---->
+{% block title %}GeoCyber{% endblock title %}{% block body %}
+<!-- Main -->
+
+<!---PIRVELI SEQCIA---->
+<section class="s-1">
+  <div class="container intromain">
+    <div class="introduction-part col-lg-6">
+      <div class="intro-text">
+        <h1 class="subtitle">Contribute to Cybersecurity Now</h1>
+        <h1 class="banner_t">
+          Report Vulnerabilities, Develop <br />
+          Georgian Cybersecurity
+        </h1>
+        <p class="banner_p">
+          Empowering ethical hackers and security experts to safeguard Georgia’s
+          digital infrastructure. Together, we identify risks, prevent breaches,
+          and build a resilient cyberspace.
+        </p>
+        <a class="btn-main half-width" href="/writeups">Begin To Bug Bounty</a>
+      </div>
+    </div>
+
+    <div class="col-lg-6 banner">
+      <div class="image-part">
+        <img src="/static/images/server-2.webp" class="server" alt="" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!----=========== SERVICES ========---->
+
+<section class="s-2">
+  <div class="container">
+    <div class="head-of-courses-section">
+      <h1 class="subtitle">COURSES</h1>
+      <h1 class="banner_t">SERVICES</h1>
+
+      <p class="banner_p">
+        Empowering ethical hackers and security experts to safeguard Georgia’s
+        digital infrastructure. Together, we identify risks, prevent breaches,
+        and build a resilient cyberspace.
+      </p>
+    </div>
+
+    <div class="cards-part">
+      {% for service in services %}
+      <div class="main" style="background-image: url('{{ service.imgurl }}')">
+        <div class="titlebox">SPECIAL</div>
+        <div class="descr">
+          <h3>{{ service.title }}</h3>
+          <p class="d-price">
+            Starting at <span class="price">${{ service.price }}</span>
+          </p>
+          <a class="btn-main btn-fullwidth" href="/service/{{service.id}}"
+            >Order Now</a
+          >
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!--========= COURSES ==========-->
+<section class="s-2">
+  <div class="container">
+    <div class="head-of-card-section">
+      <h1 class="subtitle">COURSES</h1>
+      <h1 class="banner_t">Courses for Aspiring Cybersecurity Experts</h1>
+    </div>
+
+    <div class="cards-part">
+      {% for course in courses %}
+      <div class="main" style="background-image: url('{{ course.imgurl }}')">
+        <div class="titlebox">SPECIAL</div>
+        <div class="descr">
+          <h3>{{course.title}}</h3>
+          <p class="d-price">
+            Starting at <span class="price">${{course.price}}</span>
+          </p>
+          <a class="btn-main btn-fullwidth" href="/course/{{course.id}}"
+            >Order Now</a
+          >
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!---======== SOFTWARES FOR GEORGIA ========-->
+<section class="s-2">
+  <div class="container">
+    <div class="head-of-card-section">
+      <h1 class="subtitle">SOFTWARES</h1>
+      <h1 class="banner_t">Software Reimagined for Georgia</h1>
+    </div>
+
+    <div class="cards-part">
+      {% for softwares in softwares %}
+      <div class="main" style="background-image: url('{{ softwares.imgurl }}')">
+        <div class="titlebox">SPECIAL</div>
+        <div class="descr">
+          <h3>{{softwares.title}}</h3>
+          <p class="d-price">
+            Starting at <span class="price">${{softwares.price}}</span>
+          </p>
+          <a class="btn-main btn-fullwidth" href="/software/{{softwares.id}}"
+            >Order Now</a
+          >
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  const cards = document.querySelectorAll(".main");
+
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show"); // Add the class to trigger animation
+          observer.unobserve(entry.target); // Stop observing once it's visible
+        }
+      });
+    },
+    { threshold: 0.1 } // Trigger when 10% of the card is visible
+  );
+
+  cards.forEach((card) => observer.observe(card));
+</script>
+
+{%endblock body%}

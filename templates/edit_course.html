@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block title %}Edit Course{% endblock title %} {%
+block body %}
+
+<div class="right-panel" style="margin-top: 20px">
+  <h2>Edit Course</h2>
+
+  <form method="post" class="form" id="course-add">
+    {{ course_form.hidden_tag() }}
+    <input type="hidden" name="form_name" value="course_form" />
+
+    <div class="form-group">
+      {{ course_form.title(class="input",
+      placeholder=course_form.title.label.text, required="required") }} {{
+      course_form.description(class="input",
+      placeholder=course_form.description.label.text, required="required") }}
+    </div>
+
+    {{ course_form.imgurl(class="input full",
+    placeholder=course_form.imgurl.label.text, readonly=False) }} {{
+    course_form.details(class="input full",
+    placeholder=course_form.details.label.text, readonly=False) }}
+    {{course_form.price(class="input", placeholder=course_form.price.label.text,
+    required="required")}}
+    <div class="checkbox-group">
+      <input type="checkbox" id="terms" required />
+      <label for="terms">
+        I agree to the <a href="#">Terms & Conditions</a>
+      </label>
+    </div>
+
+    {{ course_form.submit(class="btn submit-btn") }}
+  </form>
+</div>
+
+{% endblock body %}

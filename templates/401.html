@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Creepster&amp;family=Rubik+Wet+Paint&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <!--My Css-->
+    <link rel="stylesheet" href="/static/css/global.css" />
+    <title>401 - Unauthorized</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: rgb(10, 17, 40);
+        color: #333;
+      }
+
+      h2 {
+        font-size: 9rem;
+        font-weight: bold;
+        color: white;
+        margin: 0px;
+      }
+
+      h1 {
+        font-size: 30px;
+        color: #969595;
+      }
+      .btn-main {
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+        font-size: 16px;
+        color: #fff;
+        background: linear-gradient(
+          to right,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        border: none;
+        border-radius: 6px;
+        text-decoration: none;
+        margin-top: 15px;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .btn-main:hover {
+        -webkit-box-shadow: 0 0 40px 0 rgba(var(--primary-color-rgb), 1);
+        -moz-box-shadow: 0 0 40px 0 rgba(var(--primary-color-rgb), 1);
+        box-shadow: 0 0 40px 0 rgba(var(--primary-color-rgb), 1);
+        transition: 0.5s ease;
+      }
+
+      .btn-main {
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+        font-size: 16px;
+        color: #fff;
+        background: linear-gradient(
+          to right,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        border: none;
+        border-radius: 6px;
+        text-decoration: none;
+        margin-top: 15px;
+        opacity: 1;
+        transition: opacity 0.5s ease;
+      }
+
+      .half-width {
+        max-width: 50%;
+      }
+      .min-width {
+        max-width: 13%;
+      }
+
+      .btn-main:hover {
+        -webkit-box-shadow: 0 0 40px 0 rgba(var(--primary-color-rgb), 1);
+        -moz-box-shadow: 0 0 40px 0 rgba(var(--primary-color-rgb), 1);
+        box-shadow: 0 0 40px 0 rgba(var(--primary-color-rgb), 1);
+        transition: 0.5s ease;
+      }
+
+      .liner {
+        width: 200px;
+        border: 2px solid grey;
+        margin: 20px;
+      }
+      a {
+        font-size: 1.2rem;
+        text-decoration: none;
+        color: #3498db;
+      }
+      a:hover {
+        color: #2980b9;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>401</h2>
+    <h1>Unauthorized</h1>
+    <div class="liner"></div>
+    <a class="btn-main min-width" href="/">Home Page</a>
+  </body>
+</html>

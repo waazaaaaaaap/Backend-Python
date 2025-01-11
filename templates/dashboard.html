@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+<!---->
+{% block title %}User Dashboard{% endblock title %}{% block body %}
+<!-- Main -->
+<section class="profileheader">
+  <div class="welcominguser">
+    <img src="/static/images/suitman.jpg" alt="" />
+    <h1>Good Afternoon, {{current_user.username}}</h1>
+  </div>
+</section>
+
+<section>
+  <div class="customrow">
+    <div class="col-md-6 firstpart">
+      <div class="bc-p-5">
+        <div class="status">
+          <h2>
+            PUBLIC
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="#48752C"
+            >
+              <path
+                d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-43-61v-82q-35 0-59-26t-24-61v-44L149-559q-5 20-7 39.5t-2 39.5q0 130 84.5 227T437-141Zm294-108q22-24 38.5-51t28-56.5q11.5-29.5 17-60.5t5.5-63q0-106-58-192.5T607-799v18q0 35-24 61t-59 26h-87v87q0 17-13.5 28T393-568h-83v88h258q17 0 28 13t11 30v127h43q29 0 51 17t30 44Z"
+              />
+            </svg>
+          </h2>
+        </div>
+
+        <h1>Hacktivity</h1>
+      </div>
+      <!--- STATS START ---->
+      <div class="customrow pt-30">
+        <div class="col-md-6 stat">
+          <h4>Posts Published</h4>
+          <div class="amounts">{{post_count}}</div>
+        </div>
+      </div>
+      <!--- STATS END ---->
+
+      <!-- TESTIMONIALS SECTION -->
+      <div class="bc-p-5 pt-30">
+        <h1>Published Posts</h1>
+      </div>
+      <div class="testimonial-container">
+        <div class="testimonial-list">
+          <!-- Testimonial 1 -->
+
+          {% for posts in posts %}
+          <div class="testimonial-item">
+            <div class="author-info">
+              <img
+                src="/static/images/suitman.jpg"
+                alt="Profile Picture"
+                class="profile-pic"
+              />
+              <h5 class="username">{{posts.author}}</h5>
+              <a
+                href="/delete_post/{{posts.id}}"
+                class="action-button delete"
+                style="margin-left: 450px"
+                >Delete</a
+              >
+            </div>
+            <p class="testimonial-text">{{posts.title}}</p>
+            <textarea class="input full" readonly>
+{{posts.description}}</textarea
+            >
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!--- SECOND PART START -->
+    <div class="col-md-6 firstpart" style="background-color: rgb(11, 7, 20)">
+      <div class="bc-p-5">
+        <div class="status">
+          <h2>
+            PRIVATE SPACE
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="48px"
+              fill="#EA3323"
+            >
+              <path
+                d="M220-80q-24.75 0-42.37-17.63Q160-115.25 160-140v-434q0-24.75 17.63-42.38Q195.25-634 220-634h70v-96q0-78.85 55.61-134.42Q401.21-920 480.11-920q78.89 0 134.39 55.58Q670-808.85 670-730v96h70q24.75 0 42.38 17.62Q800-598.75 800-574v434q0 24.75-17.62 42.37Q764.75-80 740-80H220Zm0-60h520v-434H220v434Zm260.17-140q31.83 0 54.33-22.03T557-355q0-30-22.67-54.5t-54.5-24.5q-31.83 0-54.33 24.5t-22.5 55q0 30.5 22.67 52.5t54.5 22ZM350-634h260v-96q0-54.17-37.88-92.08-37.88-37.92-92-37.92T388-822.08q-38 37.91-38 92.08v96ZM220-140v-434 434Z"
+              />
+            </svg>
+          </h2>
+        </div>
+        <div>
+          <div class="right-panel">
+            <h2>Create New Post</h2>
+
+            <form method="post" class="form">
+              {{ form.hidden_tag() }}
+
+              <div class="form-group">
+                {{ form.title(class="input", placeholder=form.title.label.text,
+                required="required") }} {{ form.subtitle(class="input",
+                placeholder=form.subtitle.label.text, required="required") }}
+              </div>
+
+              {{ form.description(class="input full",
+              placeholder=form.description.label.text, readonly=False) }} {{
+              form.imgurl(class="input full",
+              placeholder=form.imgurl.label.text, readonly=False) }}
+              <div class="checkbox-group">
+                <input type="checkbox" id="terms" required />
+                <label for="terms">
+                  I agree to the <a href="#">Terms & Conditions</a>
+                </label>
+              </div>
+
+              {{ form.submit(class="btn submit-btn") }}
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock body %}
